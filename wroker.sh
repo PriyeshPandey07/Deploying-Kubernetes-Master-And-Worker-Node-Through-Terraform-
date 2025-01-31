@@ -51,21 +51,4 @@ echo "Enabling and starting kubelet..."
 sudo systemctl enable kubelet
 sudo systemctl start kubelet
 
-# Join the cluster using the join command provided by the master
-echo "Joining the Kubernetes cluster..."
-join_command_file="/etc/token-create.txt"
-if [ -f "$join_command_file" ]; then
-    echo "Found join command file: $join_command_file"
-    join_command=$(cat $join_command_file)
-    sudo $join_command
-else
-    echo "Join command file not found. Please ensure the master node provides the join command."
-    exit 1
-fi
 
-if [ $? -eq 0 ]; then
-    echo "Worker node joined the cluster successfully."
-else
-    echo "Failed to join the cluster. Check the logs for details."
-    exit 1
-fi
