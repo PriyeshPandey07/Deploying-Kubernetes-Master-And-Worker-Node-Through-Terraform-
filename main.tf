@@ -84,7 +84,7 @@ resource "aws_security_group" "kube_sg" {
 
 # Create the Master Node
 resource "aws_instance" "kube_master" {
-  ami                    = "ami-0614680123427b75e"
+  ami                    = "replace with your AMI ID"
   instance_type          = "t2.medium"
   subnet_id              = aws_subnet.kube_subnet.id
   vpc_security_group_ids = [aws_security_group.kube_sg.id]
@@ -99,7 +99,7 @@ resource "aws_instance" "kube_master" {
 
 # Create the Worker Node
 resource "aws_instance" "kube_worker" {
-  ami                    = "ami-0614680123427b75e"
+  ami                    = "replace with your AMI ID"
   instance_type          = "t2.medium"
   subnet_id              = aws_subnet.kube_subnet.id
   vpc_security_group_ids = [aws_security_group.kube_sg.id]
